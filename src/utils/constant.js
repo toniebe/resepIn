@@ -1,0 +1,1 @@
+export const WARNA_PRIMER = '#58d68d';
