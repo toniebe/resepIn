@@ -5,7 +5,6 @@ import ibHome from '../assets/image/ibHome.png'
 import Icon from "react-native-vector-icons/Ionicons";
 
 import BtnCategtory from '../components/BtnCategory'
-import ListResep from '../components/ListResep'
 
 import semua from '../assets/image/Semua.png'
 import ResepAyam from '../assets/image/ResepAyam.png'
@@ -24,7 +23,7 @@ const HomeScreen = () => {
     const [data,setData] = useState([]);
     
     const getData = () => {
-        axios.get('https://masak-apa.tomorisakura.vercel.app/api/recipes-length/?limit=3')
+        axios.get('https://masak-apa.tomorisakura.vercel.app/api/recipes-length/?limit=5')
         .then(function (response){
             setData(response.data.results)
             console.log(response.data.results)

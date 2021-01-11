@@ -1,11 +1,16 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
+
+import AllCategory from '../components/AllCategory'
 
 const CategoryScreen = () => {
     return (
-        <View>
-            <Text>Category Screen</Text>
-        </View>
+        <ScrollView>
+            <StatusBar barStyle='light-content'  translucent backgroundColor="rgba(0,0,0,0)" />
+            <View >
+                <AllCategory />
+            </View>
+        </ScrollView>
     )
 }
 

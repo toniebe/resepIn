@@ -1,14 +1,14 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const ListResep = () => {
+const AllCategory = () => {
     return (
         <View style={styles.container}>
-            <Text>Rekomendasi</Text>
+            <Text>Ini Tampilan category Screens</Text>
         </View>
     )
 }
 
-export default ListResep
+export default AllCategory
 
 const styles = StyleSheet.create({})
