@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import { StyleSheet, Text, View, Image, Dimensions,StatusBar } from 'react-native'
-import ResepIn from '../assets/Splash.png'
+import ResepIn from '../assets/image/Splash.png'
 import {WARNA_PRIMER} from '../utils/constant'
 
 const {widht,height} = Dimensions.get('window');

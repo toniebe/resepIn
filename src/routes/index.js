@@ -6,8 +6,8 @@ import HomeScreen from '../screen/HomeScreen'
 import CategoryScreen from '../screen/CategoryScreen'
 import SplahScreen from '../screen/SplashScreen'
 
-import iconHome from '../assets/home.png'
-import iconCategory from '../assets/icon-category.png'
+import iconHome from '../assets/image/home.png'
+import iconCategory from '../assets/image/icon-category.png'
 
 import {WARNA_PRIMER} from '../utils/constant'
 
