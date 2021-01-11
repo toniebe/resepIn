@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     },
     inputContainer:{
         marginHorizontal:18,
-        marginTop:-20,
-        elevation:4
+        marginTop:-25,
+        // elevation:2,
     },
     input:{
         borderWidth:1,

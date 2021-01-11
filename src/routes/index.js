@@ -4,10 +4,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screen/HomeScreen'
 import CategoryScreen from '../screen/CategoryScreen'
+import ExitScreen from '../screen/ExitScreen'
 import SplahScreen from '../screen/SplashScreen'
 
 import iconHome from '../assets/home.png'
 import iconCategory from '../assets/icon-category.png'
+import iconExit from '../assets/icon-exit.png'
 
 import {WARNA_PRIMER} from '../utils/constant'
 
@@ -43,8 +45,16 @@ const Dashboard = () => {
               name="Category" 
               component={CategoryScreen}
               options={{
-                tabBarLabel: () => {return <Text style={{fontSize:10}}>Category</Text>},
+                tabBarLabel: () => {return <Text style={{fontSize:10}}>Kategori</Text>},
                 tabBarIcon: (props) => {return <IconBottom data={props} image={iconCategory}/>},
+              }}
+            />
+            <Tab.Screen 
+              name="Exit" 
+              component={ExitScreen}
+              options={{
+                tabBarLabel: () => {return <Text style={{fontSize:10}}>Keluar</Text>},
+                tabBarIcon: (props) => {return <IconBottom data={props} image={iconExit}/>},
               }}
             />
         </Tab.Navigator>
