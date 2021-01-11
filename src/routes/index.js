@@ -7,6 +7,7 @@ import CategoryScreen from '../screen/CategoryScreen'
 import ExitScreen from '../screen/ExitScreen'
 import SplahScreen from '../screen/SplashScreen'
 
+
 import iconHome from '../assets/home.png'
 import iconCategory from '../assets/icon-category.png'
 import iconExit from '../assets/icon-exit.png'
