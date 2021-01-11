@@ -1,5 +1,5 @@
-import React from 'react'
-import { StyleSheet, Text, View, Dimensions, Image, ImageBackground,StatusBar, TouchableOpacity, ScrollView } from 'react-native'
+import React,{useState,useEffect} from 'react'
+import { StyleSheet, Text, View, Dimensions, Image, ImageBackground,StatusBar, TouchableOpacity, ScrollView, FlatList } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler';
 import ibHome from '../assets/image/ibHome.png'
 import Icon from "react-native-vector-icons/Ionicons";
@@ -10,14 +10,30 @@ import ListResep from '../components/ListResep'
 import semua from '../assets/image/Semua.png'
 import ResepAyam from '../assets/image/ResepAyam.png'
 import ResepDaging from '../assets/image/ResepDaging.png'
+import ResepSayuran from '../assets/image/ResepSayuran.png'
 import MenuMakanSiang from '../assets/image/MenuMakanSiang.png'
 import MenuMakanMalam from '../assets/image/MenuMakanMalam.png'
 import MasakanTradisional from '../assets/image/MasakanTradisional.png'
 import MasakanHariRaya  from '../assets/image/MasakanHariRaya.png'
 import arrow from '../assets/image/panah.png'
+import CardReceipes from '../components/CardReceipes';
+import axios from 'axios'
 
 const {width,height} = Dimensions.get('window');
 const HomeScreen = () => {
+    const [data,setData] = useState([]);
+    
+    const getData = () => {
+        axios.get('https://masak-apa.tomorisakura.vercel.app/api/recipes-length/?limit=3')
+        .then(function (response){
+            setData(response.data.results)
+            console.log(response.data.results)
+        })
+    }
+
+    useEffect(() =>{
+        getData()
+    },[])
     return (
         <ScrollView style={styles.container}>
             <StatusBar barStyle='light-content' translucent backgroundColor="rgba(0,0,0,0)" />
@@ -44,7 +60,7 @@ const HomeScreen = () => {
                         <BtnCategtory image={ResepDaging} name="Resep Daging"/>
                     </TouchableOpacity>
                     <TouchableOpacity>
-                        <BtnCategtory image={ResepDaging} name="Resep Daging"/>
+                        <BtnCategtory image={ResepSayuran} name="Resep Sayuran"/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.category}>
@@ -70,9 +86,17 @@ const HomeScreen = () => {
                             <Image source={arrow} style={styles.imgArrow}/>
                         </TouchableOpacity>
                     </View>
-                    <View style = {styles.listfood} >
-
-                    </View>
+                    <ScrollView horizontal showsHorizontalScrollIndicator={false} style = {styles.listfood} >
+                        <FlatList 
+                            data={data}
+                            contentContainerStyle={styles.list}
+                            renderItem={({item}) =>
+                            <TouchableOpacity> 
+                                <CardReceipes image={item.thumb} judul={item.title} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
+                            </TouchableOpacity>
+                        }
+                        />
+                    </ScrollView>
                 </View>
         </ScrollView>
     )
@@ -180,6 +204,13 @@ const styles = StyleSheet.create({
         marginTop: 3,
         width: 10,
         height: 7,
+    },
+
+    listfood:{
+        marginTop:10
+    },
+    list:{
+        flexDirection:'row',
     }
 
     

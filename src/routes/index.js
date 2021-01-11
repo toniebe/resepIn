@@ -8,9 +8,11 @@ import ExitScreen from '../screen/ExitScreen'
 import SplahScreen from '../screen/SplashScreen'
 
 
-import iconHome from '../assets/home.png'
-import iconCategory from '../assets/icon-category.png'
-import iconExit from '../assets/icon-exit.png'
+
+import iconExit from '../assets/image/icon-exit.png'
+import iconHome from '../assets/image/home.png'
+import iconCategory from '../assets/image/icon-category.png'
+
 
 import {WARNA_PRIMER} from '../utils/constant'
 
