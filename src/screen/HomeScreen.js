@@ -53,30 +53,30 @@ const HomeScreen = ({navigation}) => {
             </View>
             <View style={styles.categorycontainer}>
                 <View style={styles.category}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> navigation.navigate('Category')}>
                         <BtnCategtory image={semua} name="Semua"/>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'resep-ayam',title:'Resep Ayam'})}>
                         <BtnCategtory image={ResepAyam} name="Resep Ayam"/>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'resep-daging',title:'Resep Daging'})}>
                         <BtnCategtory image={ResepDaging} name="Resep Daging"/>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'resep-sayuran',title:'Resep Sayuran'})}>
                         <BtnCategtory image={ResepSayuran} name="Resep Sayuran"/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.category}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'makan-siang',title:'Menu Makan Siang'})}>
                         <BtnCategtory image={MenuMakanSiang} name="Menu Makan Siang"/>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'makan-malam',title:'Menu Makan Malam'})}>
                         <BtnCategtory image={MenuMakanMalam} name="Menu Makan Malam"/>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'masakan-tradisional',title:'Masakan Tradisional'})}>
                         <BtnCategtory image={MasakanTradisional} name="Masakan Tradisional"/>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'masakan-hari-raya',title:'Masakan Hari Raya'})} >
                         <BtnCategtory image={MasakanHariRaya} name="Masakan Hari Raya"/>
                     </TouchableOpacity>
                 </View>

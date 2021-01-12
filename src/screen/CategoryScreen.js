@@ -17,7 +17,7 @@ import Sarapan from '../assets/image/Sarapan.png'
 import axios from 'axios';
 import { FlatList } from 'react-native-gesture-handler';
 
-const CategoryScreen = () => {
+const CategoryScreen = ({navigation}) => {
 
     // const[data, setData] = useState([]);
     
@@ -51,7 +51,7 @@ const CategoryScreen = () => {
     // },[])
 
     return (
-        <ScrollView style={{backgroundColor: 'white',}}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor: 'white',}}>
             <StatusBar barStyle='dark-content'  translucent backgroundColor="rgba(0,0,0,0)" />
             <View style={styles.headerContainer}>
                 <Text style={styles.header}>Kategori</Text>
@@ -75,39 +75,39 @@ const CategoryScreen = () => {
                 /> */}
 
                 <View style={styles.category}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'resep-ayam',title:'Resep Ayam'})}>
                         <AllCategory image={ResepAyam} name="Resep Ayam"/>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'resep-daging',title:'Resep Daging'})}>
                         <AllCategory image={ResepDaging} name="Resep Daging"/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.category}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'resep-sayuran',title:'Resep Sayuran'})}>
                         <AllCategory image={ResepSayuran} name="Resep Sayuran"/>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'resep-seafood',title:'Resep Seafood'})}>
                         <AllCategory image={ResepSeafood} name="Resep Seafood"/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.category}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'sarapan',title:'Sarapan'})}>
                         <AllCategory image={Sarapan} name="Sarapan"/>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'makan-siang',title:'Menu Makan Siang'})}>
                         <AllCategory image={MenuMakanSiang} name="Menu Makan Siang"/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.category}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'makan-malam',title:'Menu Makan Malam'})}>
                         <AllCategory image={MenuMakanMalam} name="Menu Makan Malam"/>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'masakan-tradisional',title:'Masakan Tradisional'})} >
                         <AllCategory image={MasakanTradisional} name="Masakan Tradisional"/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.category}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'masakan-hari-raya',title:'Masakan Hari Raya'})}>
                         <AllCategory image={MasakanHariRaya} name="Masakan Hari Raya"/>
                     </TouchableOpacity>
                     {/* <TouchableOpacity>

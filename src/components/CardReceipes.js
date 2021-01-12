@@ -10,7 +10,7 @@ const CardReceipes = ({judul,waktu,porsi,tingkat,image}) => {
         <View style={styles.container}>
             <Image source={{uri: image}} style={styles.image} />
             <View style={styles.textContainer}>
-                <Text style={styles.text}>{judul}</Text>
+                <Text numberOfLines={2} style={styles.text}>{judul}</Text>
             </View>
             <View style={styles.iconContainer}>
                 <View style={styles.icon}>
