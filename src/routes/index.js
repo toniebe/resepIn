@@ -6,7 +6,7 @@ import HomeScreen from '../screen/HomeScreen'
 import CategoryScreen from '../screen/CategoryScreen'
 import ExitScreen from '../screen/ExitScreen'
 import SplahScreen from '../screen/SplashScreen'
-
+import DetailScreen from '../screen/DetailScreen'
 
 
 import iconExit from '../assets/image/icon-exit.png'
@@ -69,6 +69,7 @@ const Router = () => {
         <Stack.Navigator initialRouteName="Splash">
             <Stack.Screen name="Splash" component={SplahScreen} options={{ headerShown: false }}/>
             <Stack.Screen name="Dashboard" component={Dashboard} options={{ headerShown: false }}/>
+            <Stack.Screen name="Detail" component={DetailScreen} options={{ headerShown: false }}/>
         </Stack.Navigator>
     )
 }

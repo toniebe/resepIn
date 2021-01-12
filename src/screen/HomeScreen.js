@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { StyleSheet, Text, View, Dimensions, Image, ImageBackground,StatusBar, TouchableOpacity, ScrollView, FlatList } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, Image, ImageBackground,StatusBar,ActivityIndicator, TouchableOpacity, ScrollView, FlatList } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler';
 import ibHome from '../assets/image/ibHome.png'
 import Icon from "react-native-vector-icons/Ionicons";
@@ -17,16 +17,18 @@ import MasakanHariRaya  from '../assets/image/MasakanHariRaya.png'
 import arrow from '../assets/image/panah.png'
 import CardReceipes from '../components/CardReceipes';
 import axios from 'axios'
-
+import WARNA_PRIMER from '../utils/constant'
 const {width,height} = Dimensions.get('window');
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
     const [data,setData] = useState([]);
+    const [isLoading,setIsLoading] = useState(true);
     
     const getData = () => {
         axios.get('https://masak-apa.tomorisakura.vercel.app/api/recipes-length/?limit=5')
         .then(function (response){
             setData(response.data.results)
-            console.log(response.data.results)
+            setIsLoading(false)
+            console.log(data)
         })
     }
 
@@ -34,7 +36,7 @@ const HomeScreen = () => {
         getData()
     },[])
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
             <StatusBar barStyle='light-content' translucent backgroundColor="rgba(0,0,0,0)" />
             <ImageBackground source={ibHome} style={styles.imageBackground}> 
                 <View style={styles.containerText}>
@@ -86,15 +88,20 @@ const HomeScreen = () => {
                         </TouchableOpacity>
                     </View>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false} style = {styles.listfood} >
-                        <FlatList 
-                            data={data}
-                            contentContainerStyle={styles.list}
-                            renderItem={({item}) =>
-                            <TouchableOpacity> 
-                                <CardReceipes image={item.thumb} judul={item.title} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
-                            </TouchableOpacity>
+                        {isLoading == true ?
+                            (<ActivityIndicator size="large" color="#58d68d" />):
+                            (<FlatList 
+                                data={data}
+                                contentContainerStyle={styles.list}
+                                renderItem={({item}) =>
+                                <TouchableOpacity onPress={() => navigation.navigate('Detail', {key: item.key, image:item.thumb}) }> 
+                                    <CardReceipes image={item.thumb} judul={item.title} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
+                                </TouchableOpacity>
+                            }
+                            keyExtractor={(item, index) => index.toString()}
+                            />)
                         }
-                        />
+                        
                     </ScrollView>
                 </View>
         </ScrollView>
