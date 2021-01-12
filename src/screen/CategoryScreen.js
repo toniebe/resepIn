@@ -26,22 +26,25 @@ const CategoryScreen = () => {
     //     axios.get('https://masak-apa.tomorisakura.vercel.app/api/categorys/recipes')
     //     .then(function(response){
     //         setData(response.data.results)
-    //         console.log(data)
+    //         // console.log(response.data.results)
     //     })
     // }
 
-    // const dataList =[   
-    //     {image: ResepDaging}, 
-    //     {image: ResepAyam}, 
-    //     {image: ResepSayuran}, 
-    //     {image: ResepSeafood},
-    //     {image: Sarapan},
-    //     {image: MenuMakanSiang}, 
-    //     {image: MenuMakanMalam},
-    //     {image: MasakanTradisional},
-    //     {image: MasakanHariRaya},
+    // const dataList = [
+    //     '../assets/image/MasakanHariRaya.png',
+    //     '../assets/image/MasakanTradisional.png',
+    //     '../assets/image/MenuMakanMalam.png',
+    //     '../assets/image/MenuMakanSiang.png',
+    //     '../assets/image/ResepAyam.png',
+    //     '../assets/image/ResepDaging.png',
+    //     '../assets/image/ResepSayuran.png',
+    //     '../assets/image/ResepSeafood.png',
+    //     '../assets/image/Sarapan.png'
+
+    
     // ]
 
+    // console.log(dataList)
 
     // useEffect(() =>{
     //     getData()
@@ -62,10 +65,11 @@ const CategoryScreen = () => {
             <View style={styles.containerCategory} >
                 {/* <FlatList 
                         data={data}
+                        extraData={dataList}
                         contentContainerStyle={styles.list}
-                        renderItem={({item}) => 
+                        renderItem={({item,index}) => 
                         <TouchableOpacity >
-                            <AllCategory image={item.image} name={item.category}/>
+                            <AllCategory image={require(dataList)} name={item.category}/>
                         </TouchableOpacity> 
                     }
                 /> */}
@@ -106,9 +110,9 @@ const CategoryScreen = () => {
                     <TouchableOpacity>
                         <AllCategory image={MasakanHariRaya} name="Masakan Hari Raya"/>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    {/* <TouchableOpacity>
                         <AllCategory  />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             </View>
         </ScrollView>

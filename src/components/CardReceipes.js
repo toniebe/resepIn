@@ -35,7 +35,7 @@ export default CardReceipes
 
 const styles = StyleSheet.create({
     container:{
-        width:width-259,
+        width:150,
         backgroundColor:'white',
         borderWidth:1,
         borderRadius:16,
