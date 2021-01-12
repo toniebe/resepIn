@@ -18,6 +18,7 @@ import arrow from '../assets/image/panah.png'
 import CardReceipes from '../components/CardReceipes';
 import axios from 'axios'
 import WARNA_PRIMER from '../utils/constant'
+
 const {width,height} = Dimensions.get('window');
 const HomeScreen = ({navigation}) => {
     const [data,setData] = useState([]);
@@ -35,6 +36,7 @@ const HomeScreen = ({navigation}) => {
     useEffect(() =>{
         getData()
     },[])
+    
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
             <StatusBar barStyle='light-content' translucent backgroundColor="rgba(0,0,0,0)" />

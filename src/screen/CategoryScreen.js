@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { ScrollView, StatusBar, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 
 import AllCategory from '../components/AllCategory'
@@ -14,11 +14,42 @@ import MasakanTradisional from '../assets/image/MasakanTradisional.png'
 import MasakanHariRaya  from '../assets/image/MasakanHariRaya.png'
 import ResepSeafood from '../assets/image/ResepSeafood.png'
 import Sarapan from '../assets/image/Sarapan.png'
+import axios from 'axios';
+import { FlatList } from 'react-native-gesture-handler';
 
 const CategoryScreen = () => {
+
+    // const[data, setData] = useState([]);
+    
+    
+    // const getData = () => {
+    //     axios.get('https://masak-apa.tomorisakura.vercel.app/api/categorys/recipes')
+    //     .then(function(response){
+    //         setData(response.data.results)
+    //         console.log(data)
+    //     })
+    // }
+
+    // const dataList =[   
+    //     {image: ResepDaging}, 
+    //     {image: ResepAyam}, 
+    //     {image: ResepSayuran}, 
+    //     {image: ResepSeafood},
+    //     {image: Sarapan},
+    //     {image: MenuMakanSiang}, 
+    //     {image: MenuMakanMalam},
+    //     {image: MasakanTradisional},
+    //     {image: MasakanHariRaya},
+    // ]
+
+
+    // useEffect(() =>{
+    //     getData()
+    // },[])
+
     return (
         <ScrollView style={{backgroundColor: 'white',}}>
-            <StatusBar barStyle='dark-content'  translucent backgroundColor="white" />
+            <StatusBar barStyle='dark-content'  translucent backgroundColor="rgba(0,0,0,0)" />
             <View style={styles.headerContainer}>
                 <Text style={styles.header}>Kategori</Text>
             </View>
@@ -29,6 +60,16 @@ const CategoryScreen = () => {
                 </TouchableOpacity>
             </View>
             <View style={styles.containerCategory} >
+                {/* <FlatList 
+                        data={data}
+                        contentContainerStyle={styles.list}
+                        renderItem={({item}) => 
+                        <TouchableOpacity >
+                            <AllCategory image={item.image} name={item.category}/>
+                        </TouchableOpacity> 
+                    }
+                /> */}
+
                 <View style={styles.category}>
                     <TouchableOpacity>
                         <AllCategory image={ResepAyam} name="Resep Ayam"/>
@@ -64,6 +105,9 @@ const CategoryScreen = () => {
                 <View style={styles.category}>
                     <TouchableOpacity>
                         <AllCategory image={MasakanHariRaya} name="Masakan Hari Raya"/>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <AllCategory  />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -132,10 +176,14 @@ const styles = StyleSheet.create({
         marginHorizontal: 16,
     },
 
+    // list:{
+    //     flexDirection: 'row',
+    // }
+
     category: {
         // borderWidth: 1,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        marginBottom: 12,
+        marginBottom: 20,
     },
 })
