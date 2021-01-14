@@ -10,7 +10,9 @@ const CategoryDetailScreen = ({route,navigation}) => {
     
     const {key,title} = route.params
     const [data,setData] = useState([])
+    const [search,setSearch] = useState('')
     const [isLoading,setIsLoading] = useState(true)
+
 
     const getData = () => {
         axios.get(`https://masak-apa.tomorisakura.vercel.app/api/categorys/recipes/`+key)
@@ -50,8 +52,8 @@ const CategoryDetailScreen = ({route,navigation}) => {
                                     <Text style={styles.header}>{title}</Text>
                                 </View>
                                 <View style={styles.inputContainer}>
-                                    <TextInput placeholder="Cari resep" style={styles.input} />
-                                    <TouchableOpacity style={styles.icon}>
+                                    <TextInput placeholder="Cari resep" style={styles.input} value={search} onChangeText={(value)=> setSearch(value)} />
+                                    <TouchableOpacity style={styles.icon} onPress={() => navigation.navigate('Search',{key:search})}>
                                         <Icon name="search" size={20} color={"#C4C4C4"} />
                                     </TouchableOpacity>
                                 </View>
