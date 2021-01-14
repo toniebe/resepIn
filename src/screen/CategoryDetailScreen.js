@@ -19,6 +19,9 @@ const CategoryDetailScreen = ({route,navigation}) => {
             setIsLoading(false)
             console.log(response.data.results)
         })
+        .catch(function (error) {
+            console.log(error);
+          });
     }
 
     useEffect(() =>{
@@ -26,13 +29,14 @@ const CategoryDetailScreen = ({route,navigation}) => {
     },[])
     
     return (
-        <View style={{backgroundColor:'white'}}>
+        <>
             {
                 isLoading == true ? (
                 <View style={styles.indicatorContainer}>
                     <ActivityIndicator size="large" color="#58d68d" />
                 </View>
                 ) : (
+            <View style={{backgroundColor:'white'}}>
                 <View style={styles.listContainer}>
                     <FlatList 
                         data={data}
@@ -66,16 +70,13 @@ const CategoryDetailScreen = ({route,navigation}) => {
                         
                     />
                 </View>
+        </View>
                 )
             }
-            
-        </View>
+        </>    
     )
 }
 
-CategoryDetailScreen.navigationOptions = ({navigation}) => {
-    console.log(navigation);
-}
 
 export default CategoryDetailScreen
 
@@ -166,7 +167,7 @@ const styles = StyleSheet.create({
     },
     indicatorContainer:{
         flex: 1,
-        // backgroundColor:'white',
+        backgroundColor:'white',
         justifyContent:'center',
         alignItems:'center',
         paddingVertical:30,

@@ -8,6 +8,7 @@ import ExitScreen from '../screen/ExitScreen'
 import SplahScreen from '../screen/SplashScreen'
 import DetailScreen from '../screen/DetailScreen'
 import CategoryDetailScreen from '../screen/CategoryDetailScreen'
+import SearchScreen from '../screen/SearchScreen'
 
 import iconExit from '../assets/image/icon-exit.png'
 import iconHome from '../assets/image/home.png'
@@ -71,6 +72,7 @@ const Router = () => {
             <Stack.Screen name="Dashboard" component={Dashboard} options={{ headerShown: false }}/>
             <Stack.Screen name="Detail" component={DetailScreen} options={{ headerShown: false }}/>
             <Stack.Screen name="CategoryDetail" component={CategoryDetailScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="Search" component={SearchScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }

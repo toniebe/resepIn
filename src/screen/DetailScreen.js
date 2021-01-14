@@ -118,7 +118,7 @@ const DetailScreen = ({route,navigation}) => {
                             data={rekomendasi}
                             contentContainerStyle={styles.list}
                             renderItem={({item}) =>
-                            <TouchableOpacity onPress={() => navigation.navigate('Detail', {key: item.key, image:item.thumb}) }> 
+                            <TouchableOpacity onPress={() => navigation.navigate('Detail', {key: item.key, image:item.thumb})} style={styles.buttonList}> 
                                 <CardReceipes image={item.thumb} judul={item.title} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
                             </TouchableOpacity>
                         }
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
     },
 
     listfood:{
-        marginTop:10
+        marginTop:10,
     },
     list:{
         flexDirection:'row',
@@ -249,6 +249,9 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
         justifyContent:'center',
         alignItems:'center',
+    },
+    buttonList:{
+        marginRight:10
     }
     
 })

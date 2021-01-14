@@ -23,6 +23,7 @@ const {width,height} = Dimensions.get('window');
 const HomeScreen = ({navigation}) => {
     const [data,setData] = useState([]);
     const [isLoading,setIsLoading] = useState(true);
+    const [search,setSearch] = useState('')
     
     const getData = () => {
         axios.get('https://masak-apa.tomorisakura.vercel.app/api/recipes-length/?limit=5')
@@ -46,8 +47,8 @@ const HomeScreen = ({navigation}) => {
                 </View>
             </ImageBackground>
             <View style={styles.inputContainer}>
-                <TextInput placeholder="Cari resep" style={styles.input} />
-                <TouchableOpacity style={styles.icon}>
+                <TextInput placeholder="Cari resep" style={styles.input} value={search} onChangeText={(value)=> setSearch(value)} />
+                <TouchableOpacity style={styles.icon} onPress={() => navigation.navigate('Search',{key:search})}>
                     <Icon name="search" size={24} color={"#C4C4C4"} />
                 </TouchableOpacity>
             </View>
