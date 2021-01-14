@@ -1,16 +1,17 @@
 import React,{useState,useEffect} from 'react'
-import { StyleSheet, Text, View, StatusBar,TextInput,ScrollView,TouchableOpacity,ActivityIndicator, FlatList, Image } from 'react-native'
+import { StyleSheet, Text, View, StatusBar,TextInput,ScrollView,TouchableOpacity,ActivityIndicator, FlatList, Image, Dimensions } from 'react-native'
 import Icon from "react-native-vector-icons/Ionicons";
 import CardReceipes from '../components/CardReceipes';
 import arrow from '../assets/image/arrowBlack.png'
 import axios from 'axios'
 
+const numColumns = 2
 const CategoryDetailScreen = ({route,navigation}) => {
     
     const {key,title} = route.params
     const [data,setData] = useState([])
     const [isLoading,setIsLoading] = useState(true)
-    
+
     const getData = () => {
         axios.get(`https://masak-apa.tomorisakura.vercel.app/api/categorys/recipes/`+key)
         .then(function (response){
@@ -25,20 +26,7 @@ const CategoryDetailScreen = ({route,navigation}) => {
     },[])
     
     return (
-        <ScrollView style={{backgroundColor:'white'}}>
-            <StatusBar barStyle='dark-content'  translucent backgroundColor="rgba(0,0,0,0)" />
-            <View style={styles.headerContainer}>
-                <TouchableOpacity style={styles.imageContainer} onPress={() => navigation.goBack()}>
-                    <Image source={arrow} style={styles.imageHeader} />
-                </TouchableOpacity>
-                <Text style={styles.header}>{title}</Text>
-            </View>
-            <View style={styles.inputContainer}>
-                <TextInput placeholder="Cari resep" style={styles.input} />
-                <TouchableOpacity style={styles.icon}>
-                    <Icon name="search" size={20} color={"#C4C4C4"} />
-                </TouchableOpacity>
-            </View>
+        <View style={{backgroundColor:'white'}}>
             {
                 isLoading == true ? (
                 <View style={styles.indicatorContainer}>
@@ -48,20 +36,40 @@ const CategoryDetailScreen = ({route,navigation}) => {
                 <View style={styles.listContainer}>
                     <FlatList 
                         data={data}
+                        ListHeaderComponent={
+                            <View style={styles.container}>
+                                <StatusBar barStyle='dark-content'  translucent backgroundColor="rgba(0,0,0,0)" />
+                                <View style={styles.headerContainer}>
+                                    <TouchableOpacity style={styles.imageContainer} onPress={() => navigation.goBack()}>
+                                        <Image source={arrow} style={styles.imageHeader} />
+                                    </TouchableOpacity>
+                                    <Text style={styles.header}>{title}</Text>
+                                </View>
+                                <View style={styles.inputContainer}>
+                                    <TextInput placeholder="Cari resep" style={styles.input} />
+                                    <TouchableOpacity style={styles.icon}>
+                                        <Icon name="search" size={20} color={"#C4C4C4"} />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        }
+                        ListHeaderComponentStyle={styles.containerHeader}
                         contentContainerStyle={styles.list}
                         renderItem={({item}) =>
                         <View style={styles.listContent}>
                             <TouchableOpacity onPress={() => navigation.navigate('Detail', {key: item.key, image:item.thumb}) }> 
-                                <CardReceipes image={item.thumb} judul={item.title} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
+                                <CardReceipes image={item.thumb} judul={item.key.replace(/-/g , " ")} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
                             </TouchableOpacity>
                         </View>      
-                                }
+                        }
+                        numColumns={numColumns}
+                        
                     />
                 </View>
                 )
             }
             
-        </ScrollView>
+        </View>
     )
 }
 
@@ -72,17 +80,21 @@ CategoryDetailScreen.navigationOptions = ({navigation}) => {
 export default CategoryDetailScreen
 
 const styles = StyleSheet.create({
+
+    containerHeader:{
+        width: '100%',
+        // borderWidth: 1,
+        marginBottom: 20,
+    },
+
     headerContainer:{
-        flex: 1,
         backgroundColor: 'white',
         // borderWidth: 1,
         width: '100%',
-        marginTop: 35,
         overflow:'hidden',
         borderBottomWidth: 5,
         borderBottomColor: '#E5E5E5',
         flexDirection:'row',
-        
     },
 
     header:{
@@ -92,23 +104,27 @@ const styles = StyleSheet.create({
         fontSize: 24, 
         lineHeight: 24,
         fontWeight: 'bold',
-        marginVertical: 10,
+        marginVertical: 20,
         marginLeft: 24,
+        // borderWidth: 1,
         
     },
 
     imageContainer:{
         marginTop:10,
-        marginLeft:10
+        marginLeft:10,
+        
     },
 
     imageHeader:{
         width:30,
-        height:20
+        height:20,
+        marginVertical: 10,
+        borderWidth: 1,
     },
 
     inputContainer:{
-        marginHorizontal:25,
+        marginHorizontal:30,
         // borderWidth: 1,
         marginTop: 16,
         height: 40,
@@ -118,7 +134,6 @@ const styles = StyleSheet.create({
         borderWidth:1,
         borderColor:'#EEEEEE',
         borderRadius:10,
-      
         paddingLeft:20,
         fontSize:14,
         backgroundColor:'white'
@@ -134,25 +149,28 @@ const styles = StyleSheet.create({
         // borderWidth: 1,
     },
     listContainer:{
-        marginHorizontal:10,
         marginTop:20,
+        justifyContent: 'space-around',
     },
     list:{
-        flexDirection:'row',
-        flexWrap:'wrap',
-        justifyContent:'space-around',
-        marginHorizontal:10,
+        // flexWrap:'wrap',
+        alignItems: 'center',
+        // marginHorizontal:10,
+        // borderWidth: 1
     },
     listContent:{
-        marginVertical:5,
-        // marginHorizontal:10
+        marginVertical:8,
+        marginHorizontal: 5,
+        // borderWidth: 1,
+        
     },
     indicatorContainer:{
-        flex:1,
-        backgroundColor:'white',
+        flex: 1,
+        // backgroundColor:'white',
         justifyContent:'center',
         alignItems:'center',
-        paddingVertical:30
+        paddingVertical:30,
+        borderWidth: 1
     }
     
 })

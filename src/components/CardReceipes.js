@@ -10,7 +10,7 @@ const CardReceipes = ({judul,waktu,porsi,tingkat,image}) => {
         <View style={styles.container}>
             <Image source={{uri: image}} style={styles.image} />
             <View style={styles.textContainer}>
-                <Text numberOfLines={2} style={styles.text}>{judul}</Text>
+                <Text style={styles.text}>{judul}</Text>
             </View>
             <View style={styles.iconContainer}>
                 <View style={styles.icon}>
@@ -19,11 +19,11 @@ const CardReceipes = ({judul,waktu,porsi,tingkat,image}) => {
                 </View>
                 <View style={styles.icon}>
                     <Image source={deserve} style={styles.imgIcon} />
-                    <Text style={styles.fontIcon}>{porsi}</Text>
+                    <Text style={styles.fontIcon1}>{porsi}</Text>
                 </View>
                 <View style={styles.icon}>
                     <Image source={level} style={styles.imgIcon} />
-                    <Text style={styles.fontIcon}>{tingkat}</Text>
+                    <Text style={styles.fontIcon2}>{tingkat}</Text>
                 </View>
 
             </View>
@@ -35,46 +35,96 @@ export default CardReceipes
 
 const styles = StyleSheet.create({
     container:{
-        width:150,
+        width:'100%',
+        height: 220,
         backgroundColor:'white',
         borderWidth:1,
         borderRadius:16,
         borderColor:'#eeeeee',
-        marginRight:10,
+        marginRight:12,
     },
     image:{
-        width:150,
-        height:100,
+        width:'100%',
+        height:116,
         borderTopLeftRadius:16,
         borderTopRightRadius:16
     },
     textContainer:{
         alignItems:'center',
         justifyContent:'center',
-        marginTop:10,
+        marginTop:8,
         // backgroundColor:'yellow',
     },
+
     text:{
-        fontSize:16,
-        // fontWeight:'bold',
-        textAlign:'center'
+        fontSize:14,
+        fontWeight:'400',
+        textAlign:'center',
+        width: 135,
+        height: 38,
+        fontStyle: 'normal',
+        lineHeight: 16,
+        marginHorizontal: 8,
+        // borderWidth: 1,
     },
+
     iconContainer:{
-        marginVertical:10,
+        marginVertical:12,
         flexDirection:'row',
-        justifyContent:'space-around'
+        justifyContent: 'space-evenly'
     },
     icon:{
-        marginTop:10,
+        // marginTop:10,
         alignItems:'center'
     },
     imgIcon:{
-        width:20,
-        height:20
+        width:15,
+        height:15,
+        marginBottom: 4,
     },
+
     fontIcon:{
-        fontSize:10,
+        fontSize:6,
         color:'#AAAAAA',
-        textAlign:'center'
+        textAlign:'center',
+        fontStyle: 'normal',
+        fontWeight: '400',
+        lineHeight: 6,
+        width: 35,
+        height: 18,
+        // paddingVertical: 5,
+        paddingHorizontal: 5,
+        // borderWidth:1,
+        
+    },
+
+    fontIcon1:{
+        fontSize:6,
+        color:'#AAAAAA',
+        textAlign:'center',
+        fontStyle: 'normal',
+        fontWeight: '400',
+        lineHeight: 7,
+        width: 30,
+        height: 18,
+        // paddingVertical: 5,
+        paddingHorizontal: 7,
+        // borderWidth:1,
+        
+    },
+
+    fontIcon2:{
+        fontSize:6,
+        color:'#AAAAAA',
+        textAlign:'center',
+        fontStyle: 'normal',
+        fontWeight: '400',
+        lineHeight: 8,
+        width: 35,
+        height: 23,
+        // paddingVertical: 5,
+        paddingHorizontal: 5,
+        // borderWidth:1,
+        
     }
 })

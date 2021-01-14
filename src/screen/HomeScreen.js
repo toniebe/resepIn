@@ -96,9 +96,12 @@ const HomeScreen = ({navigation}) => {
                                 data={data}
                                 contentContainerStyle={styles.list}
                                 renderItem={({item}) =>
-                                <TouchableOpacity onPress={() => navigation.navigate('Detail', {key: item.key, image:item.thumb}) }> 
-                                    <CardReceipes image={item.thumb} judul={item.title} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
-                                </TouchableOpacity>
+                                <View style={styles.listContent}>
+                                    <TouchableOpacity onPress={() => navigation.navigate('Detail', {key: item.key, image:item.thumb}) }> 
+                                        <CardReceipes image={item.thumb} judul={item.key.replace(/-/g, " ")} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
+                                    </TouchableOpacity>
+                                </View>
+                               
                             }
                             keyExtractor={(item, index) => index.toString()}
                             />)
@@ -177,6 +180,7 @@ const styles = StyleSheet.create({
         // borderWidth: 1,
         marginHorizontal: 16,
     },
+
     titlelist:{
         // borderWidth: 1,
         flexDirection: 'row',
@@ -215,11 +219,18 @@ const styles = StyleSheet.create({
     },
 
     listfood:{
-        marginTop:10
+        marginVertical: 16,
+        // borderWidth: 1,
     },
     list:{
         flexDirection:'row',
-    }
+        // borderWidth: 1,
+    },
+
+    listContent:{
+        marginRight: 12,
+        // borderWidth: 1
+    },
 
     
 })

@@ -55,7 +55,7 @@ const DetailScreen = ({route,navigation}) => {
                     <ActivityIndicator size="large" color="#58d68d" />
                 </View>
             ) : (
-                <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
             <StatusBar barStyle='dark-content' translucent backgroundColor="rgba(0,0,0,0)" />
             <View style={styles.contentContaier}>
                 <ImageBackground source={{uri:image}} style={styles.imageContent} > 
