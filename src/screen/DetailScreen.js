@@ -48,8 +48,14 @@ const DetailScreen = ({route,navigation}) => {
         getRekomendasi()
     },[])
     return (
-
-        <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+        <>
+        {
+            isLoading == true ? (
+                <View style={styles.indicatorContainer}>
+                    <ActivityIndicator size="large" color="#58d68d" />
+                </View>
+            ) : (
+                <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
             <StatusBar barStyle='dark-content' translucent backgroundColor="rgba(0,0,0,0)" />
             <View style={styles.contentContaier}>
                 <ImageBackground source={{uri:image}} style={styles.imageContent} > 
@@ -81,30 +87,23 @@ const DetailScreen = ({route,navigation}) => {
                 </View>
                 <View style={styles.bahanContainer}>
                     <Text style={styles.bahanJudul}>Bahan-bahan</Text>
-                    {isLoading == true ?
-                            (<ActivityIndicator size="large" color="#58d68d" />):
-                            (<FlatList 
-                                data={bahan}
-                                renderItem={({item}) =>
-                                <Bahan bahan={item}/>
-                            }
-                                keyExtractor={(item, index) => index.toString()}
-                            />)
+                        <FlatList 
+                            data={bahan}
+                            renderItem={({item}) =>
+                            <Bahan bahan={item}/>
                         }
+                            keyExtractor={(item, index) => index.toString()}
+                        />  
                 </View>
                 <View style={styles.langkahContainer}>
                     <Text style={styles.bahanJudul}>Langkah Memasak</Text>
-                    {isLoading == true ?
-                            (<ActivityIndicator size="large" color="#58d68d" />):
-                            (<FlatList 
-                                data={langkah}   
-                                renderItem={({item}) =>
+                        <FlatList 
+                            data={langkah}   
+                            renderItem={({item}) =>
                                 <LangkahMasak langkah={item} />
                             }
-                                keyExtractor={(item, index) => index.toString()}
-                            />)
-                        }
-                    
+                             keyExtractor={(item, index) => index.toString()}
+                        />
                 </View>
                 <View style={styles.listcontainer}>
                     <View style={styles.titlelist}>
@@ -115,24 +114,24 @@ const DetailScreen = ({route,navigation}) => {
                         </TouchableOpacity>
                     </View>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false} style = {styles.listfood} >
-                        {isLoading == true ?
-                            (<ActivityIndicator size="large" color="#58d68d" />):
-                            (<FlatList 
-                                data={rekomendasi}
-                                contentContainerStyle={styles.list}
-                                renderItem={({item}) =>
-                                <TouchableOpacity onPress={() => navigation.navigate('Detail', {key: item.key, image:item.thumb}) }> 
-                                    <CardReceipes image={item.thumb} judul={item.title} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
-                                </TouchableOpacity>
-                            }
-                            keyExtractor={(item, index) => index.toString()}
-                            />)
+                        <FlatList 
+                            data={rekomendasi}
+                            contentContainerStyle={styles.list}
+                            renderItem={({item}) =>
+                            <TouchableOpacity onPress={() => navigation.navigate('Detail', {key: item.key, image:item.thumb}) }> 
+                                <CardReceipes image={item.thumb} judul={item.title} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
+                            </TouchableOpacity>
                         }
-                        
+                        keyExtractor={(item, index) => index.toString()}
+                        />
                     </ScrollView>
                 </View>
             </View>
         </ScrollView>
+            )
+        }
+        </>
+        
     )
 }
 
@@ -244,6 +243,12 @@ const styles = StyleSheet.create({
     },
     list:{
         flexDirection:'row',
+    },
+    indicatorContainer:{
+        flex:1,
+        backgroundColor:'white',
+        justifyContent:'center',
+        alignItems:'center',
     }
     
 })

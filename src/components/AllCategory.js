@@ -1,10 +1,10 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 
-const AllCategory = ({image, name}) => {
+const AllCategory = ({image, name,color}) => {
     return (
         <View style={styles.container}>
-            <View style={styles.box}>
+            <View style={[styles.box,{backgroundColor:color}]}>
                 <View style={styles.imgContainer}>
                     <Image source={image} style={styles.img} />
                 </View>
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         width: 158,
         height: 152,
         // borderWidth: 1,
-        backgroundColor: '#F8F8F8',
+        // backgroundColor: '#F8F8F8',
         borderRadius: 16,
     },
 

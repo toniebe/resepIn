@@ -76,39 +76,39 @@ const CategoryScreen = ({navigation}) => {
 
                 <View style={styles.category}>
                     <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'resep-ayam',title:'Resep Ayam'})}>
-                        <AllCategory image={ResepAyam} name="Resep Ayam"/>
+                        <AllCategory image={ResepAyam} name="Resep Ayam" color='#F8F8F8'/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'resep-daging',title:'Resep Daging'})}>
-                        <AllCategory image={ResepDaging} name="Resep Daging"/>
+                        <AllCategory image={ResepDaging} name="Resep Daging" color='#F8F8F8'/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.category}>
                     <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'resep-sayuran',title:'Resep Sayuran'})}>
-                        <AllCategory image={ResepSayuran} name="Resep Sayuran"/>
+                        <AllCategory image={ResepSayuran} name="Resep Sayuran" color='#F8F8F8'/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'resep-seafood',title:'Resep Seafood'})}>
-                        <AllCategory image={ResepSeafood} name="Resep Seafood"/>
+                        <AllCategory image={ResepSeafood} name="Resep Seafood" color='#F8F8F8'/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.category}>
                     <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'sarapan',title:'Sarapan'})}>
-                        <AllCategory image={Sarapan} name="Sarapan"/>
+                        <AllCategory image={Sarapan} name="Sarapan" color='#F8F8F8'/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'makan-siang',title:'Menu Makan Siang'})}>
-                        <AllCategory image={MenuMakanSiang} name="Menu Makan Siang"/>
+                        <AllCategory image={MenuMakanSiang} name="Menu Makan Siang" color='#F8F8F8'/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.category}>
                     <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'makan-malam',title:'Menu Makan Malam'})}>
-                        <AllCategory image={MenuMakanMalam} name="Menu Makan Malam"/>
+                        <AllCategory image={MenuMakanMalam} name="Menu Makan Malam" color='#F8F8F8'/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'masakan-tradisional',title:'Masakan Tradisional'})} >
-                        <AllCategory image={MasakanTradisional} name="Masakan Tradisional"/>
+                        <AllCategory image={MasakanTradisional} name="Masakan Tradisional" color='#F8F8F8'/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.category}>
                     <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'masakan-hari-raya',title:'Masakan Hari Raya'})}>
-                        <AllCategory image={MasakanHariRaya} name="Masakan Hari Raya"/>
+                        <AllCategory image={MasakanHariRaya} name="Masakan Hari Raya" color='#F8F8F8'/>
                     </TouchableOpacity>
                     <TouchableOpacity>
                         <AllCategory  />
