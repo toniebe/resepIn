@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         marginTop:8,
+        // borderWidth: 1,
         // backgroundColor:'yellow',
     },
 
@@ -60,22 +61,25 @@ const styles = StyleSheet.create({
         fontSize:14,
         fontWeight:'400',
         textAlign:'center',
-        width: 135,
+        width: 124,
         height: 38,
         fontStyle: 'normal',
         lineHeight: 16,
-        marginHorizontal: 8,
+        marginHorizontal: 12,
         // borderWidth: 1,
     },
 
     iconContainer:{
         marginVertical:12,
+        marginHorizontal: 12,
         flexDirection:'row',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
+        // borderWidth: 1,
     },
     icon:{
         // marginTop:10,
-        alignItems:'center'
+        alignItems:'center',
+        // borderWidth: 1,
     },
     imgIcon:{
         width:15,
