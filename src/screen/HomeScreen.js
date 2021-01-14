@@ -85,7 +85,7 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.listcontainer}>
                     <View style={styles.titlelist}>
                         <Text style={styles.title}>Rekomendasi</Text>
-                        <TouchableOpacity style={styles.btnSeeall}>
+                        <TouchableOpacity style={styles.btnSeeall} onPress={()=> navigation.navigate('Recomendation')}>
                             <Text style={styles.seeall}>Lihat Semua</Text>
                             <Image source={arrow} style={styles.imgArrow}/>
                         </TouchableOpacity>

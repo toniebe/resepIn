@@ -9,6 +9,7 @@ import SplahScreen from '../screen/SplashScreen'
 import DetailScreen from '../screen/DetailScreen'
 import CategoryDetailScreen from '../screen/CategoryDetailScreen'
 import SearchScreen from '../screen/SearchScreen'
+import RecomendationScreen from '../screen/RecomendationScreen'
 
 import iconExit from '../assets/image/icon-exit.png'
 import iconHome from '../assets/image/home.png'
@@ -73,6 +74,7 @@ const Router = () => {
             <Stack.Screen name="Detail" component={DetailScreen} options={{ headerShown: false }}/>
             <Stack.Screen name="CategoryDetail" component={CategoryDetailScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Search" component={SearchScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="Recomendation" component={RecomendationScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }
