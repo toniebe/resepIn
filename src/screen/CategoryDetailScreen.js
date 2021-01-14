@@ -119,6 +119,6 @@ const styles = StyleSheet.create({
     },
     listContent:{
         marginVertical:5,
-        marginHorizontal:10
+        // marginHorizontal:10
     }
 })

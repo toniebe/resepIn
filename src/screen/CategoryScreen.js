@@ -110,9 +110,9 @@ const CategoryScreen = ({navigation}) => {
                     <TouchableOpacity onPress={()=>navigation.navigate('CategoryDetail',{key:'masakan-hari-raya',title:'Masakan Hari Raya'})}>
                         <AllCategory image={MasakanHariRaya} name="Masakan Hari Raya"/>
                     </TouchableOpacity>
-                    {/* <TouchableOpacity>
+                    <TouchableOpacity>
                         <AllCategory  />
-                    </TouchableOpacity> */}
+                    </TouchableOpacity>
                 </View>
             </View>
         </ScrollView>
