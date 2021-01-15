@@ -36,7 +36,7 @@ export default CardReceipes
 const styles = StyleSheet.create({
     container:{
         width:'100%',
-        height: 220,
+        height: 240,
         backgroundColor:'white',
         borderWidth:1,
         borderRadius:16,
@@ -62,11 +62,12 @@ const styles = StyleSheet.create({
         fontWeight:'400',
         textAlign:'center',
         width: 124,
-        height: 38,
+        height: 57,
         fontStyle: 'normal',
         lineHeight: 16,
         marginHorizontal: 12,
         // borderWidth: 1,
+        textAlignVertical: 'center',
     },
 
     iconContainer:{
