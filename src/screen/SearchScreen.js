@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { StyleSheet, Text, View, StatusBar,TextInput,ScrollView,TouchableOpacity,ActivityIndicator, FlatList, Image, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, StatusBar,TouchableOpacity,ActivityIndicator, FlatList, Image } from 'react-native'
 import Icon from "react-native-vector-icons/Ionicons";
 import CardReceipes from '../components/CardReceipes';
 import arrow from '../assets/image/arrowBlack.png'
@@ -24,6 +24,7 @@ const SearchScreen = ({route,navigation}) => {
             console.log(response.data.results)
         }).catch(function (error) {
             console.log(error);
+            navigation.navigate('Error',{key:key})
           });
     }
 
@@ -43,7 +44,7 @@ const SearchScreen = ({route,navigation}) => {
                         ) : (
                             <>
                             {
-                              data.length == 0 ? (
+                              data.length == 0 || find == true ? (
                                   <View style={{backgroundColor:'white',flex:1}}>
                                       <View style={styles.headerContainer}>
                                                 <TouchableOpacity style={styles.imageContainer} onPress={() => navigation.goBack()}>

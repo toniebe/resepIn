@@ -7,9 +7,11 @@ import CategoryScreen from '../screen/CategoryScreen'
 import ExitScreen from '../screen/ExitScreen'
 import SplahScreen from '../screen/SplashScreen'
 import DetailScreen from '../screen/DetailScreen'
+import DetailScreen2 from '../screen/DetailScreen2'
 import CategoryDetailScreen from '../screen/CategoryDetailScreen'
 import SearchScreen from '../screen/SearchScreen'
 import RecomendationScreen from '../screen/RecomendationScreen'
+import ErrorScreen from '../screen/ErrorScreen'
 
 import iconExit from '../assets/image/icon-exit.png'
 import iconHome from '../assets/image/home.png'
@@ -72,8 +74,10 @@ const Router = () => {
             <Stack.Screen name="Splash" component={SplahScreen} options={{ headerShown: false }}/>
             <Stack.Screen name="Dashboard" component={Dashboard} options={{ headerShown: false }}/>
             <Stack.Screen name="Detail" component={DetailScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="Detail2" component={DetailScreen2} options={{ headerShown: false }}/>
             <Stack.Screen name="CategoryDetail" component={CategoryDetailScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Search" component={SearchScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="Error" component={ErrorScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Recomendation" component={RecomendationScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
     )

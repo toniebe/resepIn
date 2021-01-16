@@ -12,7 +12,7 @@ import Bahan from '../components/Bahan';
 import LangkahMasak from '../components/LangkahMasak';
 
 const {width,height} = Dimensions.get('window');
-const DetailScreen = ({route,navigation}) => {
+const DetailScreen2 = ({route,navigation}) => {
     const {key,image} = route.params;
     console.log(key)
     console.log(image)
@@ -120,7 +120,7 @@ const DetailScreen = ({route,navigation}) => {
                                     ListHeaderComponentStyle={styles.headerContainer}
                                     contentContainerStyle={styles.list}
                                     renderItem={({item}) =>
-                                    <TouchableOpacity onPress={() => navigation.navigate('Detail2', {key: item.key, image:item.thumb})} style={styles.buttonList}> 
+                                    <TouchableOpacity onPress={() => navigation.navigate('Detail', {key: item.key, image:item.thumb})} style={styles.buttonList}> 
                                         <CardReceipes image={item.thumb} judul={item.key.replace(/-/g, " ")} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
                                     </TouchableOpacity>
                                 }
@@ -137,7 +137,7 @@ const DetailScreen = ({route,navigation}) => {
     )
 }
 
-export default DetailScreen
+export default DetailScreen2
 
 const styles = StyleSheet.create({
     container:{
