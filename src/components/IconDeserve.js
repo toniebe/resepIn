@@ -13,11 +13,11 @@ const IconDeserve = ({waktu,porsi,tingkat}) => {
                 </View>
                 <View style={styles.icon}>
                     <Image source={deserve} style={styles.imgIcon} />
-                    <Text style={styles.fontIcon}>{porsi}</Text>
+                    <Text style={styles.fontIcon1}>{porsi}</Text>
                 </View>
                 <View style={styles.icon}>
                     <Image source={level} style={styles.imgIcon} />
-                    <Text style={styles.fontIcon}>{tingkat}</Text>
+                    <Text style={styles.fontIcon2}>{tingkat}</Text>
                 </View>
         </View>
     )
@@ -27,9 +27,12 @@ export default IconDeserve
 
 const styles = StyleSheet.create({
     iconContainer:{
-        marginVertical:10,
+        marginVertical:12,
+        // borderWidth: 1,
         flexDirection:'row',
-        justifyContent:'space-around'
+        justifyContent:'space-evenly',
+        // height: 95,
+        // width: 328,
     },
     icon:{
         marginTop:10,
@@ -37,11 +40,41 @@ const styles = StyleSheet.create({
     },
     imgIcon:{
         width:20,
-        height:20
+        height:20,
+        marginBottom: 8,
     },
     fontIcon:{
-        fontSize:14,
+        fontSize:12,
         color:'#AAAAAA',
-        textAlign:'center'
-    }
+        textAlign:'center',
+        height: 24,
+        width: 45,
+        lineHeight: 12,
+        // borderWidth: 1,
+        fontWeight: 'normal',
+        fontStyle: 'normal',
+    },
+    fontIcon1:{
+        fontSize:12,
+        color:'#AAAAAA',
+        textAlign:'center',
+        height: 30,
+        width: 45,
+        lineHeight: 12,
+        // borderWidth: 1,
+        fontWeight: 'normal',
+        fontStyle: 'normal',
+        paddingHorizontal: 5,
+    },
+    fontIcon2:{
+        fontSize:12,
+        color:'#AAAAAA',
+        textAlign:'center',
+        height: 30,
+        width: 45,
+        lineHeight: 12,
+        // borderWidth: 1,
+        fontWeight: 'normal',
+        fontStyle: 'normal',
+    },
 })
