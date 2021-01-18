@@ -43,6 +43,87 @@ const DetailScreen2 = ({route,navigation}) => {
         })
     }
 
+    const _renderBahan = ({item}) => {
+        return(
+            <View style={styles.listBahan}>
+                <Bahan bahan={item} />
+            </View>
+        )
+    }
+
+    const _renderLangkah = ({item}) => {
+        return(
+            <View style={styles.listLangkah}>
+                <LangkahMasak number={item.substring(0,1)} langkah={item.substring(2)} />
+            </View>
+        )
+    }
+
+    const _renderRekomendasi = ({item}) => {
+        return(
+            <View style={styles.listRekomendasi}>
+                <TouchableOpacity onPress={ () => navigation.navigate('Detail', {key: item.key, image: item.thumb})}>
+                    <CardReceipes image={item.thumb} judul={item.key.replace(/-/g, " ")} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
+                </TouchableOpacity>
+            </View>
+        )
+    }
+
+    const RenderHeaderBahan = () => {
+        return(
+            <View>
+                <ImageBackground source={{uri:image}} style={styles.image}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <Image source={iconBack} style={styles.iconBack}/>
+                    </TouchableOpacity>
+                </ImageBackground>
+                <View style={styles.iconInfoContainer}>
+                    <View style={styles.iconInfo}>
+                        <IconDeserve waktu={data.times} porsi={data.servings} tingkat={data.dificulty} />
+                    </View>
+                </View>
+                <View style={styles.titleContainer}> 
+                    <Text style={styles.title}>{data.title}</Text>
+                </View>
+                <View style={styles.authorContainer}>
+                    <Author tanggal={author.datePublished} chef={author.user} />
+                </View>
+                <View style={styles.descContainer}>
+                    <ReadMore numberOfLines={6} style={styles.desc} 
+                        seeLessStyle={styles.seeLess} 
+                        seeMoreStyle={styles.seeMore}
+                        seeMoreText="Lihat Selengkapnya"
+                        seeLessText="Sembunyikan"
+                        >
+                            {
+                                data.desc
+                            }
+                    </ReadMore>
+                </View>
+            </View>
+        )
+    }
+
+    const RenderHeaderRekomendasi =() => {
+        return (
+            <View style={styles.rekomendasiContainer}>
+                <View style={styles.textRekomendasiContainer}> 
+                    <Text style={styles.textRekomendasi}>Resep Rekomedasi</Text>
+                </View>
+                <View style={styles.seeAllContainer}> 
+                    <TouchableOpacity style={styles.BtnseeAll} onPress={() => navigation.navigate('Recomendation')}>
+                        <View style={styles.textSeeAllContainer}>
+                            <Text style={styles.textSeeAll}>Lihat Semua</Text>
+                        </View>
+                        <View style={styles.arrowContainer}>
+                            <Image source={arrow} style={styles.imgArrow}/>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        )
+    }
+
     useEffect(() =>{
         getData()
         getRekomendasi()
@@ -56,79 +137,46 @@ const DetailScreen2 = ({route,navigation}) => {
                 </View>
             ) : (
                 <View style={styles.container}>
-                    <StatusBar barStyle='dark-content' translucent backgroundColor="rgba(0,0,0,0)" />
-                    <ScrollView style={styles.contentContaier}>
-                        <ImageBackground source={{uri:image}} style={styles.imageContent} > 
-                            <TouchableOpacity onPress={() => navigation.goBack()}>
-                                <Image source={iconBack} style={{width:40,height:40,marginTop:10,marginLeft:10}} />
-                            </TouchableOpacity>
-                        </ImageBackground>    
-                        <View style={styles.iconContent}>
-                            <IconDeserve waktu={data.times} porsi={data.servings} tingkat={data.dificulty} />
-                        </View>
-                        <View style={styles.titleContainer}>
-                            <Text style={styles.titleFont}>{data.title}</Text>
-                        </View>
-                        <View style={styles.authorContainer}>
-                            <Author tanggal={author.datePublished} chef={author.user} />
-                        </View>
-                        <View style={styles.descriptionContainer}>
-                            <ReadMore numberOfLines={6} 
-                            style={styles.textStyle} 
-                            seeLessStyle={styles.seeMore} 
-                            seeMoreStyle={styles.seeMore}
-                            seeMoreText="Lihat Selengkapnya"
-                            seeLessText="Sembunyikan"
-                            >
-                                {
-                                    data.desc
-                                }
-                            </ReadMore>
-                        </View>
-                        <View style={styles.bahanContainer}>
-                            <Text style={styles.bahanJudul}>Bahan-bahan</Text>
-                            <FlatList 
-                                data={bahan}
-                                renderItem={({item}) =>
-                                <Bahan bahan={item}/>
-                            }
-                                keyExtractor={(item, index) => index.toString()}
-                            />  
-                        </View>
-                        <View style={styles.langkahContainer}>
-                            <Text style={styles.bahanJudul}>Langkah Memasak</Text>
-                            <FlatList 
-                                data={langkah}   
-                                renderItem={({item}) =>
-                                    <LangkahMasak number={item.substring(0,1)} langkah={item.substring(2)} />
-                                }
-                                keyExtractor={(item, index) => index.toString()}
-                            />
-                        </View>
-                        <View style={styles.listcontainer}>
-                            <View style={styles.titlelist}>
-                                <Text style={styles.title}>Rekomendasi</Text>
-                                <TouchableOpacity style={styles.btnSeeall}>
-                                    <Text style={styles.seeall}>Lihat Semua</Text>
-                                    <Image source={arrow} style={styles.imgArrow}/>
-                                </TouchableOpacity>
+                    <FlatList 
+                        data={bahan}
+                        ListHeaderComponent={
+                            <View>
+                                <RenderHeaderBahan />
+                                <View style={styles.BahanContainer}>
+                                    <Text style={styles.textBahan}>Bahan-bahan</Text>
+                                </View>
                             </View>
-                            <ScrollView horizontal showsHorizontalScrollIndicator={false} style = {styles.listfood} >
-                                <FlatList 
-                                    data={rekomendasi}
-                                    // ListHeaderComponent={styles.}
-                                    ListHeaderComponentStyle={styles.headerContainer}
-                                    contentContainerStyle={styles.list}
-                                    renderItem={({item}) =>
-                                    <TouchableOpacity onPress={() => navigation.navigate('Detail', {key: item.key, image:item.thumb})} style={styles.buttonList}> 
-                                        <CardReceipes image={item.thumb} judul={item.key.replace(/-/g, " ")} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
-                                    </TouchableOpacity>
+                        }
+                        ListHeaderComponentStyle={styles.header}
+                        renderItem={_renderBahan}
+                        contentContainerStyle={styles.contianerList}
+                        ListFooterComponent={
+                            <FlatList 
+                                ListHeaderComponent={
+                                    <View style={styles.langkahContainer}>
+                                        <Text style={styles.textBahan}>Langkah Memasak</Text>
+                                    </View>
                                 }
+                                data={langkah}
+                                renderItem={_renderLangkah}
                                 keyExtractor={(item, index) => index.toString()}
-                                />
-                            </ScrollView>
-                        </View>
-                    </ScrollView>
+                                ListFooterComponent={
+                                    <View style={styles.listRekomendasiContainer}> 
+                                        <View> 
+                                            <RenderHeaderRekomendasi/>
+                                        </View>
+                                        <FlatList 
+                                            data={rekomendasi}
+                                            horizontal
+                                            renderItem={_renderRekomendasi}
+                                            showsHorizontalScrollIndicator={false}
+                                        />
+                                    </View>
+                                }
+                            />
+                        }
+                        keyExtractor={(item, index) => index.toString()}
+                    />
                 </View>
             )
         }
@@ -141,131 +189,175 @@ export default DetailScreen2
 
 const styles = StyleSheet.create({
     container:{
-        flex:1,
-        backgroundColor:'white'
+        // borderWidth: 1,
+       marginTop: 25,
+       backgroundColor: 'white',
     },
-    contentContaier:{
-        marginTop:20
+
+    header:{
+        // borderWidth: 1,
     },
-    imageContent:{
-        width:width,
-        height:300,
+
+    image:{
+        width: width,
+        height: 260,
     },
-    iconContent:{
-        marginTop:-40,
-        backgroundColor:'white',
-        borderWidth:1,
-        borderColor:'#EEEEEE',
-        borderRadius:10,
+
+    iconBack:{
+        marginTop: 12,
+        marginLeft: 10,
+        height: 32,
+        width: 32,
+    },
+
+    iconInfoContainer:{
         marginHorizontal: 16,
+        marginTop: -45,
     },
+
+    iconInfo:{
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderRadius: 8,
+        borderColor: '#EEEEEE',
+    },
+
     titleContainer:{
-        marginHorizontal:16,
-        // borderWidth:1,
-    },
-    titleFont:{
-        fontSize:24,
-        fontWeight:'bold',
-    },
-    authorContainer:{
-        marginHorizontal:16,
-        marginTop:5
-    },
-    descriptionContainer:{
-        // marginHorizontal:10,
-        marginTop:16,
-        // borderWidth: 1,
-    },
-    indicator:{
-        flex:1,
-        backgroundColor:'white'
-    },
-    textStyle:{
-        fontSize:14,
         // borderWidth: 1,
         marginHorizontal: 16,
-    },
-    seeMore:{
-        color:'#53C480',
-        // borderWidth: 1,
-        textAlign: 'center',
-        width:'92%',
-        marginHorizontal:16,
-    },
-    bahanContainer:{
-        // borderWidth: 1,
-        marginHorizontal:16,
-        marginTop: 17,
-        marginBottom: 24,
-    },
-    bahanJudul:{
-        fontSize:18,
-        fontWeight:'bold',
-        color:'#595959',
-        marginBottom:  8,
-        lineHeight: 18,
-    },
-    langkahContainer:{
-        marginHorizontal:16,
-        // borderWidth: 1,
-    },
-    listcontainer:{
-        marginTop: 30,
-        // borderWidth: 1,
-        marginHorizontal: 16,
-    },
-    titlelist:{
-        // borderWidth: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        // top: -45,
+        marginTop: 16,
     },
 
     title:{
-       fontWeight: '400',
-       fontSize: 20, 
-       lineHeight: 20,
-       width: 140,
-       height: 20,
-    //    borderWidth: 1,
+        fontSize: 24,
+        fontWeight: 'bold',
+        fontStyle: 'normal',
+        lineHeight: 26,
     },
 
-    btnSeeall:{
+    authorContainer:{
+        // borderWidth: 1,
+        marginHorizontal: 16,
+        // top: -45,
+        marginTop: 12,
+    },
+
+    descContainer: {
+        marginTop: 16,
+        marginHorizontal: 16,
+    },
+
+    desc:{
+        fontSize: 14,
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        lineHeight: 19,
+    },
+
+    seeMore:{
+        // borderWidth:1, 
+        width: '100%',
+        color: '#53C480',
+        textAlign: 'center',
+    },
+
+    seeLess: {
+        borderWidth:1, 
+        width: '100%',
+        color: '#53C480',
+        textAlign: 'center',
+    },
+
+    BahanContainer:{
+        marginHorizontal: 16,
+        marginTop: 17,
+        marginBottom: 8,
+    },
+
+    listBahan:{
+        marginHorizontal: 16,
+    },
+
+    listLangkah:{
+        marginHorizontal: 16,
+    },
+
+    langkahContainer:{
+        marginHorizontal: 16,
+        marginTop: 17,
+        marginBottom: 8,
+    },
+
+    textBahan:{
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: 18,
+        lineHeight: 18,
+        color: '#595959',
+    },
+
+    listRekomendasiContainer:{
+        // borderWidth: 1,
+        marginHorizontal: 16,
+        marginTop: 24,
+        marginBottom: 20,
+    },
+
+    rekomendasiContainer:{
+        // borderWidth: 1,
         flexDirection: 'row',
-        alignItems: 'center',
+        justifyContent: 'space-between',
+        // marginHorizontal: 16,
+        marginBottom: 20,
     },
 
-    seeall:{
-      fontWeight: '600', 
-      fontSize: 10,
-      lineHeight: 14,
-      textAlign: 'left',
-      color:  '#53C480',
-    //   borderWidth: 1,
-      width:65,
-      height: 14,
+    textRekomendasiContainer:{
+        // borderWidth: 1,
+    },
+
+    textRekomendasi:{
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: 20,
+        lineHeight: 20,
+        color: '#0A191E',
+    },
+
+    seeAllContainer:{
+        // borderWidth: 1,
+        justifyContent: 'center',
+    },
+
+    textSeeAllContainer:{
+        // borderWidth: 1,
+        marginRight: 6,
+    },
+
+    textSeeAll:{
+        fontStyle: 'normal',
+        fontWeight: '600',
+        fontSize: 10,
+        lineHeight: 14,
+        color: '#53C480'
+    },
+
+    BtnseeAll:{
+        flexDirection: 'row',
+    },
+
+    arrowContainer:{
+        // borderWidth: 1,
+        justifyContent: 'center',
     },
 
     imgArrow:{
-        marginTop: 3,
-        width: 10,
+        width: 8,
         height: 7,
     },
 
-    listfood:{
-        marginTop:10,
-    },
-    list:{
-        flexDirection:'row',
-    },
-    indicatorContainer:{
-        flex:1,
-        backgroundColor:'white',
-        justifyContent:'center',
-        alignItems:'center',
-    },
-    buttonList:{
-        marginRight:12,
+    listRekomendasi:{
         // borderWidth: 1,
+        marginRight: 12,
     }
-    
 })

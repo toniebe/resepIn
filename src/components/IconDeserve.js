@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         fontSize:12,
         color:'#AAAAAA',
         textAlign:'center',
-        height: 24,
+        height: 30,
         width: 45,
         lineHeight: 12,
         // borderWidth: 1,
