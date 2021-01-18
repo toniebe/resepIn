@@ -111,7 +111,7 @@ const DetailScreen2 = ({route,navigation}) => {
                     <Text style={styles.textRekomendasi}>Resep Rekomedasi</Text>
                 </View>
                 <View style={styles.seeAllContainer}> 
-                    <TouchableOpacity style={styles.BtnseeAll} onPress={() => navigation.navigate('Recomendation')}>
+                    <TouchableOpacity style={styles.BtnseeAll} onPress={() => navigation.replace('Recomendation')}>
                         <View style={styles.textSeeAllContainer}>
                             <Text style={styles.textSeeAll}>Lihat Semua</Text>
                         </View>
