@@ -62,7 +62,7 @@ const DetailScreen = ({route,navigation}) => {
     const _renderRekomendasi = ({item}) => {
         return(
             <View style={styles.listRekomendasi}>
-                <TouchableOpacity onPress={ () => navigation.replace('Detail2', {key: item.key, image: item.thumb})}>
+                <TouchableOpacity onPress={ () => navigation.replace('Detail', {key: item.key, image: item.thumb})}>
                     <CardReceipes image={item.thumb} judul={item.key.replace(/-/g, " ")} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
                 </TouchableOpacity>
             </View>
