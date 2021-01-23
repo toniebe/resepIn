@@ -1,5 +1,3 @@
-# resepIn
+# ResepIn (Resep Indonesia)
 
-# Clone repo
-# npm install
-# npx react-native run-android
+> Sebuah Mobile apps yang berisikan resep kuliner indonesia
