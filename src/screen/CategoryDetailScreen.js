@@ -63,7 +63,7 @@ const CategoryDetailScreen = ({route,navigation}) => {
                         contentContainerStyle={styles.list}
                         renderItem={({item}) =>
                         <View style={styles.listContent}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Detail', {key: item.key, image:item.thumb}) }> 
+                            <TouchableOpacity onPress={() => navigation.push('Detail', {key: item.key, image:item.thumb}) }> 
                                 <CardReceipes image={item.thumb} judul={item.key.replace(/-/g , " ")} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
                             </TouchableOpacity>
                         </View>      

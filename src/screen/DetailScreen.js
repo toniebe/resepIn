@@ -62,7 +62,7 @@ const DetailScreen = ({route,navigation}) => {
     const _renderRekomendasi = ({item}) => {
         return(
             <View style={styles.listRekomendasi}>
-                <TouchableOpacity onPress={ () => navigation.replace('Detail', {key: item.key, image: item.thumb})}>
+                <TouchableOpacity onPress={ () => navigation.push('Detail', {key: item.key, image: item.thumb})}>
                     <CardReceipes image={item.thumb} judul={item.key.replace(/-/g, " ")} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
                 </TouchableOpacity>
             </View>
@@ -111,7 +111,7 @@ const DetailScreen = ({route,navigation}) => {
                     <Text style={styles.textRekomendasi}>Resep Rekomedasi</Text>
                 </View>
                 <View style={styles.seeAllContainer}> 
-                    <TouchableOpacity style={styles.BtnseeAll} onPress={() => navigation.navigate('Recomendation')}>
+                    <TouchableOpacity style={styles.BtnseeAll} onPress={() => navigation.push('Recomendation')}>
                         <View style={styles.textSeeAllContainer}>
                             <Text style={styles.textSeeAll}>Lihat Semua</Text>
                         </View>

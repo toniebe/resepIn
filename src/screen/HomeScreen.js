@@ -85,7 +85,7 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.listcontainer}>
                     <View style={styles.titlelist}>
                         <Text style={styles.title}>Rekomendasi</Text>
-                        <TouchableOpacity style={styles.btnSeeall} onPress={()=> navigation.navigate('Recomendation')}>
+                        <TouchableOpacity style={styles.btnSeeall} onPress={()=> navigation.push('Recomendation')}>
                             <Text style={styles.seeall}>Lihat Semua</Text>
                             <Image source={arrow} style={styles.imgArrow}/>
                         </TouchableOpacity>
@@ -98,7 +98,7 @@ const HomeScreen = ({navigation}) => {
                                 contentContainerStyle={styles.list}
                                 renderItem={({item}) =>
                                 <View style={styles.listContent}>
-                                    <TouchableOpacity onPress={() => navigation.navigate('Detail', {key: item.key, image:item.thumb}) }> 
+                                    <TouchableOpacity onPress={() => navigation.push('Detail', {key: item.key, image:item.thumb}) }> 
                                         <CardReceipes image={item.thumb} judul={item.key.replace(/-/g, " ")} waktu={item.times} porsi={item.portion} tingkat={item.dificulty} />
                                     </TouchableOpacity>
                                 </View>
