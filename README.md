@@ -2,7 +2,7 @@
 
 Sebuah Mobile apps yang berisikan resep kuliner indonesia yang dibangun menggunakan react native
 
-<span><img src="resepinComingsoon.jpeg" width="1920" /></span>
+<span><img src="resepinComingsoon.jpeg" /></span>
 
 ### Library References
 1. [React Navigation 5](https://github.com/react-navigation/react-navigation)
