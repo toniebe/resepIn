@@ -14,6 +14,8 @@ import { color } from 'react-native-reanimated';
 const ExitScreen = ({navigation}) => {
     const [modalVisible, setModalVisible] = useState(false);
     
+    // useeffect
+    // ini baru
     useEffect(() =>{
         setModalVisible(true)
     },[])
